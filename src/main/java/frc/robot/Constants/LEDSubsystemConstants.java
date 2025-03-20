@@ -20,5 +20,5 @@ public class LEDSubsystemConstants {
 
     public static final LEDPattern OPERATOR_FINAL_FAILSAFE_ON = LEDPattern.solid(Color.kBlue).blink(Seconds.of(.05));
     public static final LEDPattern MANUAL_MODE_ON = LEDPattern.solid(Color.kYellow).blink(Seconds.of(.5));
- 
+    public static final LEDPattern CLIMBING_MODE_ON = LEDPattern.solid(Color.kWhite).blink(Seconds.of(2));
 }

@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.ConditionalCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
-import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
@@ -57,7 +56,7 @@ public class RobotContainer {
   ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
   AlgaeGrabberSubsystem algaeGrabberSubsystem = new AlgaeGrabberSubsystem();
   LEDSubsystem ledSubsystem = new LEDSubsystem();
-  // ClimbSubsystem climbSubsystem = new ClimbSubsystem();
+  ClimbSubsystem climbSubsystem = new ClimbSubsystem();
 
   Command defaultDriveCommand = new FieldDriveCommand(driveSubsystem, driver::getLeftX, driver::getLeftY, driver::getRightX);
   Command algaeGrabberDefaultCommand = new AlgaeGrabberGoToPositionCommand(algaeGrabberSubsystem, AlgaeGrabberSubsystemConstants.RETRACTED_ENCODER_POSITION);
@@ -202,6 +201,16 @@ public class RobotContainer {
         new ElevatorPopUpAndAlgaeGrabberGoToPositionCommand(algaeGrabberSubsystem, elevatorSubsystem, AlgaeGrabberSubsystemConstants.RETRACTED_ENCODER_POSITION) //Stow algae
       )
     );
+  }
+
+  private void configureClimbBindings() {
+    JoystickButton climb = new JoystickButton(operator, 2);
+    Command climbCommand = new SequentialCommandGroup(
+      new ElevatorPopUpAndAlgaeGrabberGoToPositionCommand(algaeGrabberSubsystem, elevatorSubsystem, AlgaeGrabberSubsystemConstants.PROCESSOR_SCORING_ENCODER_POSITION),
+      new ClimbGoToJoystickSpeedCommand(climbSubsystem, operator::getLeftY).alongWith(new AlgaeGrabberGoToPositionCommand(algaeGrabberSubsystem, AlgaeGrabberSubsystemConstants.PROCESSOR_SCORING_ENCODER_POSITION))
+    ).raceWith(new FullIndicateCommand(ledSubsystem, LEDSubsystemConstants.CLIMBING_MODE_ON));
+
+    climb.onTrue(climbCommand);
   }
 
   private void configureSideSelectorBindings() {
