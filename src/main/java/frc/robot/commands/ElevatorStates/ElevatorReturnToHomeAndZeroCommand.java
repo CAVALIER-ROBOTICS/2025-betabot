@@ -34,7 +34,7 @@ public class ElevatorReturnToHomeAndZeroCommand extends Command {
     if(interrupted) {
       return;
     }
-    elevatorSubsystem.zeroEncoder(1);
+    elevatorSubsystem.zeroEncoder(1.2);
     System.out.println("Zeroed");
   }
 
