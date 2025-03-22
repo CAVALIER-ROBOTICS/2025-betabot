@@ -17,7 +17,7 @@ public class AlgaeGrabberSubsystemConstants {
     public static final double PROCESSOR_SCORING_ENCODER_POSITION = -.3;
     public static final double RETRACTED_ENCODER_POSITION = 0.3;
     public static final double EJECT_ENCODER_POSITION = 0.3;
-    public static final double GROUND_INTAKE_ENCODER_POSITION = -.2;
+    public static final double GROUND_INTAKE_ENCODER_POSITION = -.3;
 
     public static final double MINIMUM_SAFE_ELEVATOR_ENCODER_POSITION = 12.0; //Sometimes mechanical's methods are a delightful gift to programming.
 
