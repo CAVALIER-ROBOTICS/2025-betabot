@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants.AlgaeGrabberSubsystemConstants;
 import frc.robot.Constants.ElevatorSubsystemConstants;
 import frc.robot.Constants.PathingConstants;
@@ -323,7 +324,7 @@ public class AutoAlignCommandFactory {
             getAutoAlignDriveCommandAlgae(driveSubsystem, currentPosition, goalPose, onRedAlliance),
             new AlgaeGrabberAndElevatorPositionAndIntakeCommand(elevatorSubsystem, algaeGrabberSubsystem, elevatorEncoderPosition, AlgaeGrabberSubsystemConstants.ALGAE_REMOVAL_ENCODER_POSITION)
             .raceWith(
-                new DriveAtChassisSpeedsCommand(driveSubsystem, AlgaeGrabberSubsystemConstants.INTAKE_CHASSIS_SPEEDS)
+                new DriveAtChassisSpeedsCommand(driveSubsystem, AlgaeGrabberSubsystemConstants.INTAKE_CHASSIS_SPEEDS).beforeStarting(new WaitCommand(.5))
             )
         );
 
