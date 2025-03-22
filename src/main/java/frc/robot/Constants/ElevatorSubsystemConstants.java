@@ -17,7 +17,7 @@ public class ElevatorSubsystemConstants
     public static final int NEO550_CURRENT_LIMIT = 30;
 
     public static final double L1_ENCODER_POSITION = 0.0;
-    public static final double L2_ENCODER_POSITION = 8.0;
+    public static final double L2_ENCODER_POSITION = 8.5;
     public static final double L3_ENCODER_POSITION = 25.5;
     public static final double L4_ENCODER_POSITION = 52.0;
 
