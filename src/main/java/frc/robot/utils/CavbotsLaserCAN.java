@@ -16,7 +16,7 @@ public class CavbotsLaserCAN {
 
     public int getProximity() {
         Measurement measurement = laserCan.getMeasurement();
-        if(measurement.status == LaserCan.LASERCAN_STATUS_VALID_MEASUREMENT) {
+        if(measurement != null && measurement.status == LaserCan.LASERCAN_STATUS_VALID_MEASUREMENT) {
             return measurement.distance_mm;
         }
         return 1000;
