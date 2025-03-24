@@ -46,6 +46,7 @@ import frc.robot.commands.ElevatorStates.ElevatorReturnToHomeAndZeroCommand;
 import frc.robot.commands.ElevatorStates.ElevatorHPIntakeCommand;
 import frc.robot.commands.ElevatorStates.ElevatorGoToPositionCommand;
 import frc.robot.commands.SlowFieldDriveCommand;
+import frc.robot.commands.HIDCommands.ControllerRumbleCommand;
 
 
 public class RobotContainer {
@@ -183,6 +184,7 @@ public class RobotContainer {
 
     JoystickButton intakeAlgae = new JoystickButton(driver, 1);
     intakeAlgae.onTrue(new AutoAlgaeCommand(driveSubsystem, elevatorSubsystem, algaeGrabberSubsystem, runOuttakeBooleanSupplier, driver::getLeftX, driver::getLeftY, driver::getRightX));
+    intakeAlgae.onTrue(new ControllerRumbleCommand(operator).withTimeout(0.25));
 
     JoystickButton processorScore = new JoystickButton(operator, 6);
     processorScore.onTrue(
