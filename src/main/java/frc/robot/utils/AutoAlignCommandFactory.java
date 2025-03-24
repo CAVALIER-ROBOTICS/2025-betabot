@@ -24,8 +24,10 @@ import frc.robot.commands.DriveAtChassisSpeedsCommand;
 import frc.robot.commands.FieldDriveCommand;
 import frc.robot.commands.AlgaeGrabberStates.EjectAlgaeCommand;
 import frc.robot.commands.AlgaeGrabberStates.PositionHoldAndEjectCommand;
+import frc.robot.commands.AlgaeGrabberStates.PositionHoldAndIntakeCommand;
 import frc.robot.commands.AlgaeGrabberStates.PositionHoldCommand;
 import frc.robot.commands.AlgaeGrabberStates.StowAlgaeCommand;
+import frc.robot.commands.AlgaeGrabberStates.AutonomousAlgaeGrabberCommands.AlgaeGrabberAndElevatorPositionAndEndCommand;
 import frc.robot.commands.AlgaeGrabberStates.AutonomousAlgaeGrabberCommands.AlgaeGrabberAndElevatorPositionAndIntakeCommand;
 import frc.robot.commands.AutoAlign.FollowPrecisePathAndRaiseElevatorAndScoreCommand;
 import frc.robot.commands.AutoAlign.FollowPrecisePathCommand;
@@ -326,6 +328,24 @@ public class AutoAlignCommandFactory {
             .raceWith(
                 new DriveAtChassisSpeedsCommand(driveSubsystem, AlgaeGrabberSubsystemConstants.INTAKE_CHASSIS_SPEEDS).beforeStarting(new WaitCommand(.5))
             )
+        );
+
+        return driveAndIntake.andThen(new ParallelCommandGroup(
+            new PositionHoldAndEjectCommand(algaeGrabberSubsystem, elevatorSubsystem, eject),
+            new FieldDriveCommand(driveSubsystem, x, y, rot)
+        )).onlyIf(() -> isPoseSafeToDriveTo(currentPosition, goalPose));
+    }
+
+    public static Command getSafeAutoAlignAlgaeIntakeWithSlowDriveV2(Pose2d currentPosition, ElevatorSubsystem elevatorSubsystem, AlgaeGrabberSubsystem algaeGrabberSubsystem, DriveSubsystem driveSubsystem, boolean onRedAlliance, DoubleSupplier x, DoubleSupplier y, DoubleSupplier rot, BooleanSupplier eject) {
+        initalize();
+        Pose2d goalPose = getClosestAlgaeIntakePose(currentPosition, onRedAlliance);
+        double elevatorEncoderPosition = getAlgaeElevatorEncoderPosition(goalPose, onRedAlliance);
+
+        Command driveAndIntake = new SequentialCommandGroup(
+            getAutoAlignDriveCommandAlgae(driveSubsystem, currentPosition, goalPose, onRedAlliance),
+            new AlgaeGrabberAndElevatorPositionAndEndCommand(elevatorSubsystem, algaeGrabberSubsystem, elevatorEncoderPosition, AlgaeGrabberSubsystemConstants.ALGAE_REMOVAL_ENCODER_POSITION),
+            new PositionHoldAndIntakeCommand(algaeGrabberSubsystem, elevatorSubsystem)
+            .raceWith(new DriveAtChassisSpeedsCommand(driveSubsystem, AlgaeGrabberSubsystemConstants.INTAKE_CHASSIS_SPEEDS))
         );
 
         return driveAndIntake.andThen(new ParallelCommandGroup(
