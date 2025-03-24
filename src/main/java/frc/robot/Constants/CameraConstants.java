@@ -11,5 +11,5 @@ public class CameraConstants {
     public static final String LOCALIZATION_CAM_TWO_NAME = "lc2";
 
     public static final Transform3d LOCALIZATION_CAM_ONE_OFFSET = new Transform3d(new Translation3d(-.0952, 0.2921, 0.1), new Rotation3d(0.0, 0.0, 0.0));
-    public static final Transform3d LOCALIZATION_CAM_TWO_OFFSET = new Transform3d(new Translation3d(0.2889225, -0.2159, 0.1143), new Rotation3d(0, Math.toRadians(20), Math.toRadians(40)));
+    public static final Transform3d LOCALIZATION_CAM_TWO_OFFSET = new Transform3d(new Translation3d(0.2889225, -0.2159, 0.1143), new Rotation3d(0, Math.toRadians(20), Math.toRadians(40))); //I am very suspicious of this.
 }
