@@ -60,7 +60,7 @@ public class PathingConstants {
     public static final double ALGAE_X_OFFSET = -0.15;
     public static final double ALGAE_Y_OFFSET = -0.3; //-.65
 
-    public static final double L4_X_OFFSET = 0.1;
+    public static final double L4_X_OFFSET = 0.15;
     public static final double L4_Y_OFFSET = 0.0;
 
     public static final List<Pose2d> BLUE_SIDED_ALGAE_INTAKE_POSITIONS = Arrays.asList(
