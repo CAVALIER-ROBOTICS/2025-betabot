@@ -15,7 +15,8 @@ public class AutonomousChooser {
 
     String[] validPaths = {
         "2l4Left",
-        "2l4Right"
+        "2l4Right",
+        "3l4Left"
     };
     
     public AutonomousChooser() {

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.607748287671233,
-        "y": 7.3757277397260275
+        "x": 1.0627499999999999,
+        "y": 7.34
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.1677124418218376,
-        "y": 6.647316334504936
+        "x": 1.9202499999999998,
+        "y": 6.56975
       },
       "isLocked": false,
-      "linkedName": "bruh4"
+      "linkedName": "p43c_end"
     },
     {
       "anchor": {
-        "x": 3.2127049180327862,
-        "y": 3.8631659836065575
+        "x": 3.7147500000000004,
+        "y": 5.18525
       },
       "prevControl": {
-        "x": 1.9942827414397835,
-        "y": 4.598192069956465
+        "x": 2.27175,
+        "y": 6.3260000000000005
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,8 +30,8 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.7995735607675781,
-      "rotationDegrees": 0.0
+      "waypointRelativePos": 0.5,
+      "rotationDegrees": -59.99999999999999
     }
   ],
   "constraintZones": [],
@@ -47,13 +47,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.6227556872063189
+    "rotation": -59.99999999999999
   },
   "reversed": false,
-  "folder": null,
+  "folder": "3l4pls",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 126.6070748126075
+    "rotation": 125.00000000000001
   },
   "useDefaultConstraints": true
 }

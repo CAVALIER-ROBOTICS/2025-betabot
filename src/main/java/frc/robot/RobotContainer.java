@@ -88,9 +88,11 @@ public class RobotContainer {
   }
 
   private void configureNamedCommands() {
-    NamedCommands.registerCommand("ScoreL4", new ExtendToHeightThenScoreCommand(elevatorSubsystem, ElevatorSubsystemConstants.L4_ENCODER_POSITION).withTimeout(2.5));
+    NamedCommands.registerCommand("ScoreL4", new ExtendToHeightThenScoreCommand(elevatorSubsystem, ElevatorSubsystemConstants.L4_ENCODER_POSITION, ElevatorSubsystemConstants.L4_GRABBER_SPEED).withTimeout(2.5));
     NamedCommands.registerCommand("ScoreL3", new ExtendToHeightThenScoreCommand(elevatorSubsystem, ElevatorSubsystemConstants.L3_ENCODER_POSITION).withTimeout(2));
     NamedCommands.registerCommand("ScoreL2", new ExtendToHeightThenScoreCommand(elevatorSubsystem, ElevatorSubsystemConstants.L2_ENCODER_POSITION).withTimeout(1));
+    // NamedCommands.registerCommand("ScoreL4", new ExtendToHeightThenScoreCommand(elevatorSubsystem, ElevatorSubsystemConstants.L2_ENCODER_POSITION).withTimeout(2.5));
+
     NamedCommands.registerCommand("HPIntake", intakeCommand);
   }
 
