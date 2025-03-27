@@ -14,9 +14,9 @@ public class AutonomousChooser {
     SendableChooser<Command> chooser = new SendableChooser<Command>();
 
     String[] validPaths = {
+        "3l4Left",
         "2l4Left",
-        "2l4Right",
-        "3l4Left"
+        "2l4Right"
     };
     
     public AutonomousChooser() {

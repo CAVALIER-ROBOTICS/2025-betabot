@@ -18,7 +18,7 @@ public class ElevatorSubsystemConstants
 
     public static final double L1_ENCODER_POSITION = 0.0;
     public static final double L2_ENCODER_POSITION = 8.5;
-    public static final double L3_ENCODER_POSITION = 25.5;
+    public static final double L3_ENCODER_POSITION = 25.0;
     public static final double L4_ENCODER_POSITION = 52.0;
 
     public static final double HP_ENCODER_POSITION = 0.1;
@@ -37,7 +37,7 @@ public class ElevatorSubsystemConstants
 
     public static final double HOMED_CURRENT_DRAW = 60.0;
 
-    public static final double MAX_ACCELERATION = 8000;
+    public static final double MAX_ACCELERATION = 5000;
     public static final double MAX_VELOCITY = 15000;
     public static final double AT_SETPOINT_TOLERANCE = 1.0;
 
