@@ -3,9 +3,10 @@
   "robotLength": 0.9,
   "holonomicMode": true,
   "pathFolders": [
-    "AutoTop",
-    "New Folder",
     "3l4pls",
+    "AutoTop",
+    "3l4no",
+    "New New Folder",
     "algaeRemovalTwoL3Top",
     "autoBottom"
   ],
